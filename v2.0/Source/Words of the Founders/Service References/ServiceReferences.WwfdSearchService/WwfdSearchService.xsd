@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Wwfd.Core.DataObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Wwfd.Core.DataObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfQuote">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Quote" nillable="true" type="tns:Quote" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQuote" nillable="true" type="tns:ArrayOfQuote" />
+  <xs:complexType name="Quote">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FounderId" type="xs:int" />
+      <xs:element minOccurs="0" name="FounderImageThumbnail" nillable="true" type="xs:anyURI" />
+      <xs:element minOccurs="0" name="FounderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Keywords" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuoteId" type="xs:int" />
+      <xs:element minOccurs="0" name="QuoteText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferenceInfo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Quote" nillable="true" type="tns:Quote" />
+  <xs:complexType name="ArrayOfFounder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Founder" nillable="true" type="tns:Founder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFounder" nillable="true" type="tns:ArrayOfFounder" />
+  <xs:complexType name="Founder">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateBorn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateDied" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Suffix" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Founder" nillable="true" type="tns:Founder" />
+</xs:schema>

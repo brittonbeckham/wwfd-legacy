@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- links 'liked' pages/quotes to facebook admin(s) -->
+	<meta property="fb:admins" content="1491235605" />
+
+	<link href="/favicon.ico" rel="shortcut icon" type="images/x-icon" />
+
+	<title>@ViewBag.Title - My ASP.NET Application</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+
+	<!-- Google Analytics -->
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+
+		try {
+			var pageTracker = _gat._getTracker("UA-10044240-4");
+			pageTracker._trackPageview();
+		} catch (err) {
+		}
+	</script>
+</head>
+<body>
+	<div id="site-wrap">
+
+		<div id="page">
+			<nav>
+				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("Quotes", "Index", "Home")</li>
+					<li>@Html.ActionLink("Founders", "Index", "Home")</li>
+					<li>@Html.ActionLink("Documents", "Index", "Home")</li>
+					<li>@Html.ActionLink("What is WWFD?", "Index", "Home")</li>
+					<li>@Html.ActionLink("Contact Us", "About", "Home")</li>
+				</ul>
+				@Html.Partial("_LoginPartial")
+			</nav>			<header>
+				<a href=""><img alt="WhatWouldTheFoundersDo.org Logo" src="~/images/founders.png" /></a>
+
+				<form class="form-inline">
+					<input type="text" name="" placeholder="Search for Wisdom" class="form-control input-lg">
+					<button value="Search" class="btn btn-lg btn-primary">Search</button>
+				</form>
+			</header>
+			<div id="main">
+				<aside id="leftpane">
+					<input type="text" id="searchTextFounder" class="form-control input-sm" placeholder="Search Founders">
+					<section id="founderList">
+						@Html.Action("Listing", "Founder")
+					</section>
+				</aside>
+				<section id="content">
+					@RenderBody()
+				</section>
+
+				<aside id="rightpane">
+
+					<h3>Quote of the Day!</h3>
+					<p>Enter your email and get daily quotes of genius from the Founders sent to your inbox!</p>
+
+					<br />
+					<input type="email" name="txtSubscriberEmail" class="form-control input-sm" placeholder="Enter your email" />
+					<button class="btn btn-sm btn-info">Subscribe!</button>
+
+				</aside>
+			</div>
+		</div>
+		<footer>
+			<p>
+				The website whatwouldthefoundersdo.org purpose is to helping Americans, immigrants and foreigners understand the issues<br />
+				of today's world in relation to the ideas of America's Founding Fathers and Founding Mothers, using their own words.<br />
+				Wwfd has no alliances or affiliations with, or accepts donations from any polictical party. We offer the information <br />
+				on this site without interpretation or partisan emphasis.
+			</p>
+
+			<div id="copyright">Copyright &copy; 2009 - @DateTime.Now.Year WhatWouldTheFoundersDo.org. All rights resered.</div>
+		</footer>
+	</div>
+</body>
+</html>

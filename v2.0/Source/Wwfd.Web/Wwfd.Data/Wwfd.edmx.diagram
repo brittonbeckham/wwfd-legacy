@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e7b9a8d36fc04c0c94fe8d87fcc0bead" Name="Diagram1">
+        <EntityTypeShape EntityType="WwfdModel.Contributor" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.Founder" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.KeywordPhras" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.QOTD" Width="1.5" PointX="2.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.QOTDSubscriber" Width="1.5" PointX="4.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.QuoteFlag" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.QuoteFlagType" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.QuoteHistory" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.Quote" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.QuoteTaskHistory" Width="1.5" PointX="10.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.QuoteTaskType" Width="1.5" PointX="8.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.Role" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.Search" Width="1.5" PointX="6.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.ContributionsView" Width="1.5" PointX="8.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.QuotesView" Width="1.5" PointX="10.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WwfdModel.SearchReportView" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <AssociationConnector Association="WwfdModel.FK_Contributors_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="WwfdModel.FK_QuoteFlags_Contributors" ManuallyRouted="false" />
+        <AssociationConnector Association="WwfdModel.FK_Quotes_Contributors" ManuallyRouted="false" />
+        <AssociationConnector Association="WwfdModel.FK_Quotes_Founders" ManuallyRouted="false" />
+        <AssociationConnector Association="WwfdModel.FK_QuoteFlags_QuoteFlagTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="WwfdModel.FK_QuoteFlags_Quotes" ManuallyRouted="false" />
+        <AssociationConnector Association="WwfdModel.FK_QuoteHistory_Quotes" ManuallyRouted="false" />
+        <AssociationConnector Association="WwfdModel.FK_QuoteTaskHistory_Quotes" ManuallyRouted="false" />
+        <AssociationConnector Association="WwfdModel.FK_QuoteTaskHistory_QuoteTaskTypes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

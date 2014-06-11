@@ -1,0 +1,15 @@
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\Wwfd.Data.dll.config
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\Wwfd.Data.dll
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\Wwfd.Data.pdb
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\EntityFramework.dll
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\MiniProfiler.dll
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\MiniProfiler.EntityFramework.dll
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\EntityFramework.xml
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\MiniProfiler.pdb
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\MiniProfiler.xml
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\bin\Debug\MiniProfiler.EntityFramework.pdb
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\obj\Debug\Wwfd.Data.csprojResolveAssemblyReference.cache
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\obj\Debug\Wwfd.Data.dll
+C:\SVN\WWFD\trunk\Source\Wwfd.Web\WWfd.Data\obj\Debug\Wwfd.Data.pdb

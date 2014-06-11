@@ -1,0 +1,8 @@
+User-agent: *
+Crawl-delay: 2
+Allow: /contribute/Default.aspx
+Disallow: /contribute/
+Disallow: /bit/
+Disallow: /App_Data/
+Sitemap: /sitemap.xml
+

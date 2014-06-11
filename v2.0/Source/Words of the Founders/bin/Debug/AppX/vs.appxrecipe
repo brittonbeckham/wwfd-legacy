@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>MINUTEMAN</Machine>
+    <WindowsUser>britton beckham</WindowsUser>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>64993EmersonLocke.WordsoftheFounders</PackageIdentityName>
+    <RegisteredManifestChecksum>188982A27AF3B8BC2B4AFF9CBC79B194960C2D6B631216B97F4E3FBF601BD57C</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>64993EmersonLocke.WordsoftheFounders_1.0.0.3_neutral__eh0bg65z07pqm</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>64993EmersonLocke.WordsoftheFounders_eh0bg65z07pqm!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>64993EmersonLocke.WordsoftheFounders</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=40B6FBCC-0EB5-47A3-BA1E-63471DCE0F7F</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.3</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-11T05:32:22.671</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Debug\WordsOfTheFounders.exe">
+      <PackagePath>WordsOfTheFounders.exe</PackagePath>
+      <Modified>2013-12-11T05:39:10.842</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\Declaration_independence.jpg">
+      <PackagePath>Assets\Declaration_independence.jpg</PackagePath>
+      <Modified>2013-12-10T02:09:49.884</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-10T02:09:49.887</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-10T02:09:49.848</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-10T02:09:49.854</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-10T02:09:49.857</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\WideLogo.scale-100.png">
+      <PackagePath>Assets\WideLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-10T02:09:49.851</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Debug\App.xaml">
+      <PackagePath>App.xaml</PackagePath>
+      <Modified>2013-12-10T02:09:49.838</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Debug\Common\StandardStyles.xaml">
+      <PackagePath>Common\StandardStyles.xaml</PackagePath>
+      <Modified>2013-12-10T02:09:50.085</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Debug\Controls\Quote.xaml">
+      <PackagePath>Controls\Quote.xaml</PackagePath>
+      <Modified>2013-12-10T04:10:11.469</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Debug\MainPage.xaml">
+      <PackagePath>MainPage.xaml</PackagePath>
+      <Modified>2013-12-10T03:43:52.457</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2013-12-11T05:32:22.626</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

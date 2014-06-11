@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>MINUTEMAN</Machine>
+    <WindowsUser>britton beckham</WindowsUser>
+    <SolutionConfiguration>Release|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>64993EmersonLocke.WordsoftheFounders</PackageIdentityName>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Release\WordsOfTheFounders.exe">
+      <PackagePath>WordsOfTheFounders.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\Declaration_independence.jpg">
+      <PackagePath>Assets\Declaration_independence.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\Assets\WideLogo.scale-100.png">
+      <PackagePath>Assets\WideLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Release\App.xaml">
+      <PackagePath>App.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Release\Common\StandardStyles.xaml">
+      <PackagePath>Common\StandardStyles.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Release\Controls\Quote.xaml">
+      <PackagePath>Controls\Quote.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Release\MainPage.xaml">
+      <PackagePath>MainPage.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\SVN\WWFD\trunk\Source\Words of the Founders\bin\Release\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WwfdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contributors">
+          <Key>
+            <PropertyRef Name="ContributorID" />
+          </Key>
+          <Property Name="ContributorID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleID" Type="tinyint" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="51" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Founders">
+          <Key>
+            <PropertyRef Name="FounderID" />
+          </Key>
+          <Property Name="FounderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="35" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="15" />
+          <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DateBorn" Type="date" />
+          <Property Name="DateDied" Type="date" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="124" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="KeywordPhrases">
+          <Key>
+            <PropertyRef Name="KeywordPhraseID" />
+          </Key>
+          <Property Name="KeywordPhraseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Phrase" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cardinality" Type="smallint" Nullable="false" />
+          <Property Name="Ratio" Type="decimal" Precision="8" Scale="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QOTD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuoteID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QOTDSubscribers">
+          <Key>
+            <PropertyRef Name="SubscriberID" />
+          </Key>
+          <Property Name="SubscriberID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SubscriberEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuoteFlags">
+          <Key>
+            <PropertyRef Name="FlagID" />
+          </Key>
+          <Property Name="FlagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuoteID" Type="int" Nullable="false" />
+          <Property Name="FlaggedByContributorID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FlagRemovedByContributorID" Type="uniqueidentifier" />
+          <Property Name="QuoteFlagTypeID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="DateFlagged" Type="datetime" Nullable="false" />
+          <Property Name="DateFlaggedRemoved" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="QuoteFlagTypes">
+          <Key>
+            <PropertyRef Name="QuoteFlagTypeID" />
+          </Key>
+          <Property Name="QuoteFlagTypeID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="FlagDescription" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuoteHistory">
+          <Key>
+            <PropertyRef Name="HistoryID" />
+          </Key>
+          <Property Name="HistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuoteID" Type="int" Nullable="false" />
+          <Property Name="ContributorID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quotes">
+          <Key>
+            <PropertyRef Name="QuoteID" />
+          </Key>
+          <Property Name="QuoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContributorID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FounderID" Type="int" Nullable="false" />
+          <Property Name="QuoteText" Type="nvarchar" MaxLength="1850" Nullable="false" />
+          <Property Name="ReferenceInfo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Keywords" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="Approved" Type="bit" Nullable="false" />
+          <Property Name="QuoteLength" Type="int" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="QuoteTaskHistory">
+          <Key>
+            <PropertyRef Name="QuoteTaskHistoryID" />
+          </Key>
+          <Property Name="QuoteTaskHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuoteTaskTypeID" Type="int" Nullable="false" />
+          <Property Name="QuoteID" Type="int" Nullable="false" />
+          <Property Name="ContributorID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateCompleted" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuoteTaskTypes">
+          <Key>
+            <PropertyRef Name="QuoteTaskTypeID" />
+          </Key>
+          <Property Name="QuoteTaskTypeID" Type="int" Nullable="false" />
+          <Property Name="TaskName" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TaskDescription" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Searches">
+          <Key>
+            <PropertyRef Name="SearchID" />
+          </Key>
+          <Property Name="SearchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SearchText" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DateSearched" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'wwfd.dbo.ContributionsView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ContributionsView">
+          <Key>
+            <PropertyRef Name="ContributorID" />
+            <PropertyRef Name="Contributor" />
+          </Key>
+          <Property Name="ContributorID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Contributor" Type="nvarchar" MaxLength="51" Nullable="false" />
+          <Property Name="QuotesEntered" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'wwfd.dbo.QuotesView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="QuotesView">
+          <Key>
+            <PropertyRef Name="QuoteID" />
+            <PropertyRef Name="ContributorID" />
+            <PropertyRef Name="QuoteText" />
+            <PropertyRef Name="ReferenceInfo" />
+            <PropertyRef Name="Keywords" />
+            <PropertyRef Name="DateAdded" />
+          </Key>
+          <Property Name="FounderID" Type="int" />
+          <Property Name="QuoteID" Type="int" Nullable="false" />
+          <Property Name="ContributorID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="124" />
+          <Property Name="QuoteText" Type="nvarchar" MaxLength="1850" Nullable="false" />
+          <Property Name="ReferenceInfo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Keywords" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="QuoteLength" Type="int" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'wwfd.dbo.SearchReportView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SearchReportView">
+          <Key>
+            <PropertyRef Name="SearchText" />
+          </Key>
+          <Property Name="SearchText" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="TimesSearched" Type="int" />
+        </EntityType>
+        <Association Name="FK_Contributors_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Contributors" Type="Self.Contributors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Contributors">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteFlags_Contributors">
+          <End Role="Contributors" Type="Self.Contributors" Multiplicity="1" />
+          <End Role="QuoteFlags" Type="Self.QuoteFlags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contributors">
+              <PropertyRef Name="ContributorID" />
+            </Principal>
+            <Dependent Role="QuoteFlags">
+              <PropertyRef Name="FlaggedByContributorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteFlags_QuoteFlagTypes">
+          <End Role="QuoteFlagTypes" Type="Self.QuoteFlagTypes" Multiplicity="1" />
+          <End Role="QuoteFlags" Type="Self.QuoteFlags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuoteFlagTypes">
+              <PropertyRef Name="QuoteFlagTypeID" />
+            </Principal>
+            <Dependent Role="QuoteFlags">
+              <PropertyRef Name="QuoteFlagTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteFlags_Quotes">
+          <End Role="Quotes" Type="Self.Quotes" Multiplicity="1" />
+          <End Role="QuoteFlags" Type="Self.QuoteFlags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotes">
+              <PropertyRef Name="QuoteID" />
+            </Principal>
+            <Dependent Role="QuoteFlags">
+              <PropertyRef Name="QuoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteHistory_Quotes">
+          <End Role="Quotes" Type="Self.Quotes" Multiplicity="1" />
+          <End Role="QuoteHistory" Type="Self.QuoteHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotes">
+              <PropertyRef Name="QuoteID" />
+            </Principal>
+            <Dependent Role="QuoteHistory">
+              <PropertyRef Name="QuoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotes_Contributors">
+          <End Role="Contributors" Type="Self.Contributors" Multiplicity="1" />
+          <End Role="Quotes" Type="Self.Quotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contributors">
+              <PropertyRef Name="ContributorID" />
+            </Principal>
+            <Dependent Role="Quotes">
+              <PropertyRef Name="ContributorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotes_Founders">
+          <End Role="Founders" Type="Self.Founders" Multiplicity="1" />
+          <End Role="Quotes" Type="Self.Quotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Founders">
+              <PropertyRef Name="FounderID" />
+            </Principal>
+            <Dependent Role="Quotes">
+              <PropertyRef Name="FounderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteTaskHistory_Quotes">
+          <End Role="Quotes" Type="Self.Quotes" Multiplicity="1" />
+          <End Role="QuoteTaskHistory" Type="Self.QuoteTaskHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotes">
+              <PropertyRef Name="QuoteID" />
+            </Principal>
+            <Dependent Role="QuoteTaskHistory">
+              <PropertyRef Name="QuoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteTaskHistory_QuoteTaskTypes">
+          <End Role="QuoteTaskTypes" Type="Self.QuoteTaskTypes" Multiplicity="1" />
+          <End Role="QuoteTaskHistory" Type="Self.QuoteTaskHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuoteTaskTypes">
+              <PropertyRef Name="QuoteTaskTypeID" />
+            </Principal>
+            <Dependent Role="QuoteTaskHistory">
+              <PropertyRef Name="QuoteTaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddQOTDSubscriber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AuthenticateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="BuildKeywordPhrasesTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CreateRandomQOTD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetQuoteOfTheDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetRandomQuote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetRandomQuoteID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetStats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetTopKeywordPhrases" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SearchFounders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchText" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SearchQuotes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchText" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SearchQuotesOld" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchText" Type="nvarchar" Mode="In" />
+          <Parameter Name="SaveSearch" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SetQOTDStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QuoteDate" Type="datetime" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="s" Type="nvarchar" Mode="In" />
+          <Parameter Name="sep" Type="char" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="position" Type="int" />
+                <Property Name="part" Type="nvarchar" MaxLength="512" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="WwfdModelStoreContainer">
+          <EntitySet Name="Contributors" EntityType="Self.Contributors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Founders" EntityType="Self.Founders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KeywordPhrases" EntityType="Self.KeywordPhrases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QOTD" EntityType="Self.QOTD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QOTDSubscribers" EntityType="Self.QOTDSubscribers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuoteFlags" EntityType="Self.QuoteFlags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuoteFlagTypes" EntityType="Self.QuoteFlagTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuoteHistory" EntityType="Self.QuoteHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quotes" EntityType="Self.Quotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuoteTaskHistory" EntityType="Self.QuoteTaskHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuoteTaskTypes" EntityType="Self.QuoteTaskTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Searches" EntityType="Self.Searches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContributionsView" EntityType="Self.ContributionsView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ContributionsView].[ContributorID] AS [ContributorID], 
+    [ContributionsView].[Contributor] AS [Contributor], 
+    [ContributionsView].[QuotesEntered] AS [QuotesEntered]
+    FROM [dbo].[ContributionsView] AS [ContributionsView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="QuotesView" EntityType="Self.QuotesView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [QuotesView].[FounderID] AS [FounderID], 
+    [QuotesView].[QuoteID] AS [QuoteID], 
+    [QuotesView].[ContributorID] AS [ContributorID], 
+    [QuotesView].[FullName] AS [FullName], 
+    [QuotesView].[QuoteText] AS [QuoteText], 
+    [QuotesView].[ReferenceInfo] AS [ReferenceInfo], 
+    [QuotesView].[Keywords] AS [Keywords], 
+    [QuotesView].[QuoteLength] AS [QuoteLength], 
+    [QuotesView].[DateAdded] AS [DateAdded]
+    FROM [dbo].[QuotesView] AS [QuotesView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SearchReportView" EntityType="Self.SearchReportView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SearchReportView].[SearchText] AS [SearchText], 
+    [SearchReportView].[TimesSearched] AS [TimesSearched]
+    FROM [dbo].[SearchReportView] AS [SearchReportView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Contributors_Roles" Association="Self.FK_Contributors_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Contributors" EntitySet="Contributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteFlags_Contributors" Association="Self.FK_QuoteFlags_Contributors">
+            <End Role="Contributors" EntitySet="Contributors" />
+            <End Role="QuoteFlags" EntitySet="QuoteFlags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteFlags_QuoteFlagTypes" Association="Self.FK_QuoteFlags_QuoteFlagTypes">
+            <End Role="QuoteFlagTypes" EntitySet="QuoteFlagTypes" />
+            <End Role="QuoteFlags" EntitySet="QuoteFlags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteFlags_Quotes" Association="Self.FK_QuoteFlags_Quotes">
+            <End Role="Quotes" EntitySet="Quotes" />
+            <End Role="QuoteFlags" EntitySet="QuoteFlags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteHistory_Quotes" Association="Self.FK_QuoteHistory_Quotes">
+            <End Role="Quotes" EntitySet="Quotes" />
+            <End Role="QuoteHistory" EntitySet="QuoteHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotes_Contributors" Association="Self.FK_Quotes_Contributors">
+            <End Role="Contributors" EntitySet="Contributors" />
+            <End Role="Quotes" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotes_Founders" Association="Self.FK_Quotes_Founders">
+            <End Role="Founders" EntitySet="Founders" />
+            <End Role="Quotes" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteTaskHistory_Quotes" Association="Self.FK_QuoteTaskHistory_Quotes">
+            <End Role="Quotes" EntitySet="Quotes" />
+            <End Role="QuoteTaskHistory" EntitySet="QuoteTaskHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteTaskHistory_QuoteTaskTypes" Association="Self.FK_QuoteTaskHistory_QuoteTaskTypes">
+            <End Role="QuoteTaskTypes" EntitySet="QuoteTaskTypes" />
+            <End Role="QuoteTaskHistory" EntitySet="QuoteTaskHistory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WwfdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="Split_Result">
+          <Property Name="position" Type="Int32" />
+          <Property Name="part" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <EntityType Name="Contributor">
+          <Key>
+            <PropertyRef Name="ContributorID" />
+          </Key>
+          <Property Name="ContributorID" Type="Guid" Nullable="false" />
+          <Property Name="RoleID" Type="Byte" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="51" FixedLength="false" Unicode="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Contributors_Roles" FromRole="Contributors" ToRole="Roles" />
+          <NavigationProperty Name="QuoteFlags" Relationship="Self.FK_QuoteFlags_Contributors" FromRole="Contributors" ToRole="QuoteFlags" />
+          <NavigationProperty Name="Quotes" Relationship="Self.FK_Quotes_Contributors" FromRole="Contributors" ToRole="Quotes" />
+        </EntityType>
+        <EntityType Name="Founder">
+          <Key>
+            <PropertyRef Name="FounderID" />
+          </Key>
+          <Property Name="FounderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Suffix" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DateBorn" Type="DateTime" Precision="0" />
+          <Property Name="DateDied" Type="DateTime" Precision="0" />
+          <Property Name="FullName" Type="String" MaxLength="124" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <NavigationProperty Name="Quotes" Relationship="Self.FK_Quotes_Founders" FromRole="Founders" ToRole="Quotes" />
+        </EntityType>
+        <EntityType Name="KeywordPhras">
+          <Key>
+            <PropertyRef Name="KeywordPhraseID" />
+          </Key>
+          <Property Name="KeywordPhraseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Phrase" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cardinality" Type="Int16" Nullable="false" />
+          <Property Name="Ratio" Type="Decimal" Precision="8" Scale="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QOTD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuoteID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QOTDSubscriber">
+          <Key>
+            <PropertyRef Name="SubscriberID" />
+          </Key>
+          <Property Name="SubscriberID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubscriberEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="QuoteFlag">
+          <Key>
+            <PropertyRef Name="FlagID" />
+          </Key>
+          <Property Name="FlagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuoteID" Type="Int32" Nullable="false" />
+          <Property Name="FlaggedByContributorID" Type="Guid" Nullable="false" />
+          <Property Name="FlagRemovedByContributorID" Type="Guid" />
+          <Property Name="QuoteFlagTypeID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateFlagged" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateFlaggedRemoved" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contributor" Relationship="Self.FK_QuoteFlags_Contributors" FromRole="QuoteFlags" ToRole="Contributors" />
+          <NavigationProperty Name="QuoteFlagType" Relationship="Self.FK_QuoteFlags_QuoteFlagTypes" FromRole="QuoteFlags" ToRole="QuoteFlagTypes" />
+          <NavigationProperty Name="Quote" Relationship="Self.FK_QuoteFlags_Quotes" FromRole="QuoteFlags" ToRole="Quotes" />
+        </EntityType>
+        <EntityType Name="QuoteFlagType">
+          <Key>
+            <PropertyRef Name="QuoteFlagTypeID" />
+          </Key>
+          <Property Name="QuoteFlagTypeID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FlagDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="QuoteFlags" Relationship="Self.FK_QuoteFlags_QuoteFlagTypes" FromRole="QuoteFlagTypes" ToRole="QuoteFlags" />
+        </EntityType>
+        <EntityType Name="QuoteHistory">
+          <Key>
+            <PropertyRef Name="HistoryID" />
+          </Key>
+          <Property Name="HistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuoteID" Type="Int32" Nullable="false" />
+          <Property Name="ContributorID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Quote" Relationship="Self.FK_QuoteHistory_Quotes" FromRole="QuoteHistory" ToRole="Quotes" />
+        </EntityType>
+        <EntityType Name="Quote">
+          <Key>
+            <PropertyRef Name="QuoteID" />
+          </Key>
+          <Property Name="QuoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContributorID" Type="Guid" Nullable="false" />
+          <Property Name="FounderID" Type="Int32" Nullable="false" />
+          <Property Name="QuoteText" Type="String" MaxLength="1850" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReferenceInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Keywords" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Approved" Type="Boolean" Nullable="false" />
+          <Property Name="QuoteLength" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Contributor" Relationship="Self.FK_Quotes_Contributors" FromRole="Quotes" ToRole="Contributors" />
+          <NavigationProperty Name="Founder" Relationship="Self.FK_Quotes_Founders" FromRole="Quotes" ToRole="Founders" />
+          <NavigationProperty Name="QuoteFlags" Relationship="Self.FK_QuoteFlags_Quotes" FromRole="Quotes" ToRole="QuoteFlags" />
+          <NavigationProperty Name="QuoteHistories" Relationship="Self.FK_QuoteHistory_Quotes" FromRole="Quotes" ToRole="QuoteHistory" />
+          <NavigationProperty Name="QuoteTaskHistories" Relationship="Self.FK_QuoteTaskHistory_Quotes" FromRole="Quotes" ToRole="QuoteTaskHistory" />
+        </EntityType>
+        <EntityType Name="QuoteTaskHistory">
+          <Key>
+            <PropertyRef Name="QuoteTaskHistoryID" />
+          </Key>
+          <Property Name="QuoteTaskHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuoteTaskTypeID" Type="Int32" Nullable="false" />
+          <Property Name="QuoteID" Type="Int32" Nullable="false" />
+          <Property Name="ContributorID" Type="Guid" Nullable="false" />
+          <Property Name="DateCompleted" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Quote" Relationship="Self.FK_QuoteTaskHistory_Quotes" FromRole="QuoteTaskHistory" ToRole="Quotes" />
+          <NavigationProperty Name="QuoteTaskType" Relationship="Self.FK_QuoteTaskHistory_QuoteTaskTypes" FromRole="QuoteTaskHistory" ToRole="QuoteTaskTypes" />
+        </EntityType>
+        <EntityType Name="QuoteTaskType">
+          <Key>
+            <PropertyRef Name="QuoteTaskTypeID" />
+          </Key>
+          <Property Name="QuoteTaskTypeID" Type="Int32" Nullable="false" />
+          <Property Name="TaskName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TaskDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="QuoteTaskHistories" Relationship="Self.FK_QuoteTaskHistory_QuoteTaskTypes" FromRole="QuoteTaskTypes" ToRole="QuoteTaskHistory" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contributors" Relationship="Self.FK_Contributors_Roles" FromRole="Roles" ToRole="Contributors" />
+        </EntityType>
+        <EntityType Name="Search">
+          <Key>
+            <PropertyRef Name="SearchID" />
+          </Key>
+          <Property Name="SearchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SearchText" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateSearched" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ContributionsView">
+          <Key>
+            <PropertyRef Name="ContributorID" />
+            <PropertyRef Name="Contributor" />
+          </Key>
+          <Property Name="ContributorID" Type="Guid" Nullable="false" />
+          <Property Name="Contributor" Type="String" MaxLength="51" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuotesEntered" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QuotesView">
+          <Key>
+            <PropertyRef Name="QuoteID" />
+            <PropertyRef Name="ContributorID" />
+            <PropertyRef Name="QuoteText" />
+            <PropertyRef Name="ReferenceInfo" />
+            <PropertyRef Name="Keywords" />
+            <PropertyRef Name="DateAdded" />
+          </Key>
+          <Property Name="FounderID" Type="Int32" />
+          <Property Name="QuoteID" Type="Int32" Nullable="false" />
+          <Property Name="ContributorID" Type="Guid" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="124" FixedLength="false" Unicode="true" />
+          <Property Name="QuoteText" Type="String" MaxLength="1850" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReferenceInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Keywords" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuoteLength" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SearchReportView">
+          <Key>
+            <PropertyRef Name="SearchText" />
+          </Key>
+          <Property Name="SearchText" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TimesSearched" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Contributors_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="Contributors" Type="Self.Contributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Contributors">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteFlags_Contributors">
+          <End Role="Contributors" Type="Self.Contributor" Multiplicity="1" />
+          <End Role="QuoteFlags" Type="Self.QuoteFlag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contributors">
+              <PropertyRef Name="ContributorID" />
+            </Principal>
+            <Dependent Role="QuoteFlags">
+              <PropertyRef Name="FlaggedByContributorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotes_Contributors">
+          <End Role="Contributors" Type="Self.Contributor" Multiplicity="1" />
+          <End Role="Quotes" Type="Self.Quote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contributors">
+              <PropertyRef Name="ContributorID" />
+            </Principal>
+            <Dependent Role="Quotes">
+              <PropertyRef Name="ContributorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotes_Founders">
+          <End Role="Founders" Type="Self.Founder" Multiplicity="1" />
+          <End Role="Quotes" Type="Self.Quote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Founders">
+              <PropertyRef Name="FounderID" />
+            </Principal>
+            <Dependent Role="Quotes">
+              <PropertyRef Name="FounderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteFlags_QuoteFlagTypes">
+          <End Role="QuoteFlagTypes" Type="Self.QuoteFlagType" Multiplicity="1" />
+          <End Role="QuoteFlags" Type="Self.QuoteFlag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuoteFlagTypes">
+              <PropertyRef Name="QuoteFlagTypeID" />
+            </Principal>
+            <Dependent Role="QuoteFlags">
+              <PropertyRef Name="QuoteFlagTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteFlags_Quotes">
+          <End Role="Quotes" Type="Self.Quote" Multiplicity="1" />
+          <End Role="QuoteFlags" Type="Self.QuoteFlag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotes">
+              <PropertyRef Name="QuoteID" />
+            </Principal>
+            <Dependent Role="QuoteFlags">
+              <PropertyRef Name="QuoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteHistory_Quotes">
+          <End Role="Quotes" Type="Self.Quote" Multiplicity="1" />
+          <End Role="QuoteHistory" Type="Self.QuoteHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotes">
+              <PropertyRef Name="QuoteID" />
+            </Principal>
+            <Dependent Role="QuoteHistory">
+              <PropertyRef Name="QuoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteTaskHistory_Quotes">
+          <End Role="Quotes" Type="Self.Quote" Multiplicity="1" />
+          <End Role="QuoteTaskHistory" Type="Self.QuoteTaskHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotes">
+              <PropertyRef Name="QuoteID" />
+            </Principal>
+            <Dependent Role="QuoteTaskHistory">
+              <PropertyRef Name="QuoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteTaskHistory_QuoteTaskTypes">
+          <End Role="QuoteTaskTypes" Type="Self.QuoteTaskType" Multiplicity="1" />
+          <End Role="QuoteTaskHistory" Type="Self.QuoteTaskHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuoteTaskTypes">
+              <PropertyRef Name="QuoteTaskTypeID" />
+            </Principal>
+            <Dependent Role="QuoteTaskHistory">
+              <PropertyRef Name="QuoteTaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WwfdEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contributors" EntityType="Self.Contributor" />
+          <EntitySet Name="Founders" EntityType="Self.Founder" />
+          <EntitySet Name="KeywordPhrases" EntityType="Self.KeywordPhras" />
+          <EntitySet Name="QOTDs" EntityType="Self.QOTD" />
+          <EntitySet Name="QOTDSubscribers" EntityType="Self.QOTDSubscriber" />
+          <EntitySet Name="QuoteFlags" EntityType="Self.QuoteFlag" />
+          <EntitySet Name="QuoteFlagTypes" EntityType="Self.QuoteFlagType" />
+          <EntitySet Name="QuoteHistories" EntityType="Self.QuoteHistory" />
+          <EntitySet Name="Quotes" EntityType="Self.Quote" />
+          <EntitySet Name="QuoteTaskHistories" EntityType="Self.QuoteTaskHistory" />
+          <EntitySet Name="QuoteTaskTypes" EntityType="Self.QuoteTaskType" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Searches" EntityType="Self.Search" />
+          <EntitySet Name="ContributionsViews" EntityType="Self.ContributionsView" />
+          <EntitySet Name="QuotesViews" EntityType="Self.QuotesView" />
+          <EntitySet Name="SearchReportViews" EntityType="Self.SearchReportView" />
+          <AssociationSet Name="FK_Contributors_Roles" Association="Self.FK_Contributors_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Contributors" EntitySet="Contributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteFlags_Contributors" Association="Self.FK_QuoteFlags_Contributors">
+            <End Role="Contributors" EntitySet="Contributors" />
+            <End Role="QuoteFlags" EntitySet="QuoteFlags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotes_Contributors" Association="Self.FK_Quotes_Contributors">
+            <End Role="Contributors" EntitySet="Contributors" />
+            <End Role="Quotes" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotes_Founders" Association="Self.FK_Quotes_Founders">
+            <End Role="Founders" EntitySet="Founders" />
+            <End Role="Quotes" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteFlags_QuoteFlagTypes" Association="Self.FK_QuoteFlags_QuoteFlagTypes">
+            <End Role="QuoteFlagTypes" EntitySet="QuoteFlagTypes" />
+            <End Role="QuoteFlags" EntitySet="QuoteFlags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteFlags_Quotes" Association="Self.FK_QuoteFlags_Quotes">
+            <End Role="Quotes" EntitySet="Quotes" />
+            <End Role="QuoteFlags" EntitySet="QuoteFlags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteHistory_Quotes" Association="Self.FK_QuoteHistory_Quotes">
+            <End Role="Quotes" EntitySet="Quotes" />
+            <End Role="QuoteHistory" EntitySet="QuoteHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteTaskHistory_Quotes" Association="Self.FK_QuoteTaskHistory_Quotes">
+            <End Role="Quotes" EntitySet="Quotes" />
+            <End Role="QuoteTaskHistory" EntitySet="QuoteTaskHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteTaskHistory_QuoteTaskTypes" Association="Self.FK_QuoteTaskHistory_QuoteTaskTypes">
+            <End Role="QuoteTaskTypes" EntitySet="QuoteTaskTypes" />
+            <End Role="QuoteTaskHistory" EntitySet="QuoteTaskHistories" />
+          </AssociationSet>
+          <FunctionImport Name="Split" ReturnType="Collection(WwfdModel.Split_Result)" IsComposable="true">
+            <Parameter Name="s" Mode="In" Type="String" />
+            <Parameter Name="sep" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddQOTDSubscriber">
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AuthenticateUser" ReturnType="Collection(Boolean)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BuildKeywordPhrasesTable" />
+          <FunctionImport Name="CreateRandomQOTD" />
+          <FunctionImport Name="GetQuoteOfTheDay" ReturnType="Collection(WwfdModel.GetQuoteOfTheDay_Result)" />
+          <FunctionImport Name="GetRandomQuote" ReturnType="Collection(WwfdModel.GetRandomQuote_Result)" />
+          <FunctionImport Name="GetRandomQuoteID" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="GetStats" ReturnType="Collection(WwfdModel.GetStats_Result)" />
+          <FunctionImport Name="GetTopKeywordPhrases" />
+          <FunctionImport Name="SearchFounders" ReturnType="Collection(WwfdModel.SearchFounders_Result)">
+            <Parameter Name="SearchText" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchQuotes" ReturnType="Collection(WwfdModel.SearchQuotes_Result)">
+            <Parameter Name="SearchText" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchQuotesOld">
+            <Parameter Name="SearchText" Mode="In" Type="String" />
+            <Parameter Name="SaveSearch" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SetQOTDStatus">
+            <Parameter Name="QuoteDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetQuoteOfTheDay_Result">
+          <Property Type="Int32" Name="FounderID" Nullable="true" />
+          <Property Type="Int32" Name="QuoteID" Nullable="false" />
+          <Property Type="Guid" Name="ContributorID" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="124" />
+          <Property Type="String" Name="QuoteText" Nullable="false" MaxLength="1850" />
+          <Property Type="String" Name="ReferenceInfo" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Keywords" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="QuoteLength" Nullable="true" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetRandomQuote_Result">
+          <Property Type="Int32" Name="QuoteID" Nullable="false" />
+          <Property Type="Guid" Name="ContributorID" Nullable="false" />
+          <Property Type="Int32" Name="FounderID" Nullable="false" />
+          <Property Type="String" Name="QuoteText" Nullable="false" MaxLength="1850" />
+          <Property Type="String" Name="ReferenceInfo" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Keywords" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="Approved" Nullable="false" />
+          <Property Type="Int32" Name="QuoteLength" Nullable="true" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="124" />
+        </ComplexType>
+        <ComplexType Name="GetStats_Result">
+          <Property Type="Int32" Name="QuoteCount" Nullable="true" />
+          <Property Type="Int32" Name="FounderCount" Nullable="true" />
+          <Property Type="Int32" Name="SubscriberCount" Nullable="true" />
+          <Property Type="DateTime" Name="LastQOTD" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SearchFounders_Result">
+          <Property Type="Int32" Name="FounderID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+          <Property Type="String" Name="Suffix" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="DateBorn" Nullable="true" />
+          <Property Type="DateTime" Name="DateDied" Nullable="true" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="124" />
+        </ComplexType>
+        <ComplexType Name="SearchQuotes_Result">
+          <Property Type="Int32" Name="QuoteID" Nullable="false" />
+          <Property Type="Guid" Name="ContributorID" Nullable="false" />
+          <Property Type="Int32" Name="FounderID" Nullable="false" />
+          <Property Type="String" Name="QuoteText" Nullable="false" MaxLength="1850" />
+          <Property Type="String" Name="ReferenceInfo" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Keywords" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="Approved" Nullable="false" />
+          <Property Type="Int32" Name="QuoteLength" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WwfdModelStoreContainer" CdmEntityContainer="WwfdEntities">
+          <EntitySetMapping Name="Contributors">
+            <EntityTypeMapping TypeName="WwfdModel.Contributor">
+              <MappingFragment StoreEntitySet="Contributors">
+                <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Founders">
+            <EntityTypeMapping TypeName="WwfdModel.Founder">
+              <MappingFragment StoreEntitySet="Founders">
+                <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateBorn" ColumnName="DateBorn" />
+                <ScalarProperty Name="DateDied" ColumnName="DateDied" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KeywordPhrases">
+            <EntityTypeMapping TypeName="WwfdModel.KeywordPhras">
+              <MappingFragment StoreEntitySet="KeywordPhrases">
+                <ScalarProperty Name="KeywordPhraseID" ColumnName="KeywordPhraseID" />
+                <ScalarProperty Name="Phrase" ColumnName="Phrase" />
+                <ScalarProperty Name="Cardinality" ColumnName="Cardinality" />
+                <ScalarProperty Name="Ratio" ColumnName="Ratio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QOTDs">
+            <EntityTypeMapping TypeName="WwfdModel.QOTD">
+              <MappingFragment StoreEntitySet="QOTD">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QOTDSubscribers">
+            <EntityTypeMapping TypeName="WwfdModel.QOTDSubscriber">
+              <MappingFragment StoreEntitySet="QOTDSubscribers">
+                <ScalarProperty Name="SubscriberID" ColumnName="SubscriberID" />
+                <ScalarProperty Name="SubscriberEmail" ColumnName="SubscriberEmail" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuoteFlags">
+            <EntityTypeMapping TypeName="WwfdModel.QuoteFlag">
+              <MappingFragment StoreEntitySet="QuoteFlags">
+                <ScalarProperty Name="FlagID" ColumnName="FlagID" />
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="FlaggedByContributorID" ColumnName="FlaggedByContributorID" />
+                <ScalarProperty Name="FlagRemovedByContributorID" ColumnName="FlagRemovedByContributorID" />
+                <ScalarProperty Name="QuoteFlagTypeID" ColumnName="QuoteFlagTypeID" />
+                <ScalarProperty Name="DateFlagged" ColumnName="DateFlagged" />
+                <ScalarProperty Name="DateFlaggedRemoved" ColumnName="DateFlaggedRemoved" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuoteFlagTypes">
+            <EntityTypeMapping TypeName="WwfdModel.QuoteFlagType">
+              <MappingFragment StoreEntitySet="QuoteFlagTypes">
+                <ScalarProperty Name="QuoteFlagTypeID" ColumnName="QuoteFlagTypeID" />
+                <ScalarProperty Name="FlagDescription" ColumnName="FlagDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuoteHistories">
+            <EntityTypeMapping TypeName="WwfdModel.QuoteHistory">
+              <MappingFragment StoreEntitySet="QuoteHistory">
+                <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quotes">
+            <EntityTypeMapping TypeName="WwfdModel.Quote">
+              <MappingFragment StoreEntitySet="Quotes">
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+                <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+                <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+                <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuoteTaskHistories">
+            <EntityTypeMapping TypeName="WwfdModel.QuoteTaskHistory">
+              <MappingFragment StoreEntitySet="QuoteTaskHistory">
+                <ScalarProperty Name="QuoteTaskHistoryID" ColumnName="QuoteTaskHistoryID" />
+                <ScalarProperty Name="QuoteTaskTypeID" ColumnName="QuoteTaskTypeID" />
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+                <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuoteTaskTypes">
+            <EntityTypeMapping TypeName="WwfdModel.QuoteTaskType">
+              <MappingFragment StoreEntitySet="QuoteTaskTypes">
+                <ScalarProperty Name="QuoteTaskTypeID" ColumnName="QuoteTaskTypeID" />
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="WwfdModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Searches">
+            <EntityTypeMapping TypeName="WwfdModel.Search">
+              <MappingFragment StoreEntitySet="Searches">
+                <ScalarProperty Name="SearchID" ColumnName="SearchID" />
+                <ScalarProperty Name="SearchText" ColumnName="SearchText" />
+                <ScalarProperty Name="DateSearched" ColumnName="DateSearched" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContributionsViews">
+            <EntityTypeMapping TypeName="WwfdModel.ContributionsView">
+              <MappingFragment StoreEntitySet="ContributionsView">
+                <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+                <ScalarProperty Name="Contributor" ColumnName="Contributor" />
+                <ScalarProperty Name="QuotesEntered" ColumnName="QuotesEntered" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuotesViews">
+            <EntityTypeMapping TypeName="WwfdModel.QuotesView">
+              <MappingFragment StoreEntitySet="QuotesView">
+                <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+                <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SearchReportViews">
+            <EntityTypeMapping TypeName="WwfdModel.SearchReportView">
+              <MappingFragment StoreEntitySet="SearchReportView">
+                <ScalarProperty Name="SearchText" ColumnName="SearchText" />
+                <ScalarProperty Name="TimesSearched" ColumnName="TimesSearched" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="WwfdModel.Store.Split" FunctionImportName="Split">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WwfdModel.Split_Result">
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="part" ColumnName="part" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddQOTDSubscriber" FunctionName="WwfdModel.Store.AddQOTDSubscriber" />
+          <FunctionImportMapping FunctionImportName="AuthenticateUser" FunctionName="WwfdModel.Store.AuthenticateUser" />
+          <FunctionImportMapping FunctionImportName="BuildKeywordPhrasesTable" FunctionName="WwfdModel.Store.BuildKeywordPhrasesTable" />
+          <FunctionImportMapping FunctionImportName="CreateRandomQOTD" FunctionName="WwfdModel.Store.CreateRandomQOTD" />
+          <FunctionImportMapping FunctionImportName="GetQuoteOfTheDay" FunctionName="WwfdModel.Store.GetQuoteOfTheDay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WwfdModel.GetQuoteOfTheDay_Result">
+                <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+                <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRandomQuote" FunctionName="WwfdModel.Store.GetRandomQuote">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WwfdModel.GetRandomQuote_Result">
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+                <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+                <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+                <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRandomQuoteID" FunctionName="WwfdModel.Store.GetRandomQuoteID" />
+          <FunctionImportMapping FunctionImportName="GetStats" FunctionName="WwfdModel.Store.GetStats">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WwfdModel.GetStats_Result">
+                <ScalarProperty Name="QuoteCount" ColumnName="QuoteCount" />
+                <ScalarProperty Name="FounderCount" ColumnName="FounderCount" />
+                <ScalarProperty Name="SubscriberCount" ColumnName="SubscriberCount" />
+                <ScalarProperty Name="LastQOTD" ColumnName="LastQOTD" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetTopKeywordPhrases" FunctionName="WwfdModel.Store.GetTopKeywordPhrases" />
+          <FunctionImportMapping FunctionImportName="SearchFounders" FunctionName="WwfdModel.Store.SearchFounders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WwfdModel.SearchFounders_Result">
+                <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateBorn" ColumnName="DateBorn" />
+                <ScalarProperty Name="DateDied" ColumnName="DateDied" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchQuotes" FunctionName="WwfdModel.Store.SearchQuotes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WwfdModel.SearchQuotes_Result">
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+                <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+                <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+                <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchQuotesOld" FunctionName="WwfdModel.Store.SearchQuotesOld" />
+          <FunctionImportMapping FunctionImportName="SetQOTDStatus" FunctionName="WwfdModel.Store.SetQOTDStatus" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

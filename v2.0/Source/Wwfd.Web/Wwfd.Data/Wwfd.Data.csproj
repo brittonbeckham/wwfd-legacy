@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2F26572B-9B5E-4C64-9C50-C7C81ECDBA1E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wwfd.Data</RootNamespace>
+    <AssemblyName>Wwfd.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler.EntityFramework">
+      <HintPath>..\packages\MiniProfiler.EF.2.1.0\lib\net40\MiniProfiler.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContributionsView.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contributor.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Founder.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetQuoteOfTheDay_Result.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetRandomQuote_Result.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetStats_Result.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KeywordPhras.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QOTD.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QOTDSubscriber.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Quote.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuoteFlag.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuoteFlagType.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuoteHistory.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuotesView.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuoteTaskHistory.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuoteTaskType.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Search.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchFounders_Result.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchQuotes_Result.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchReportView.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Split_Result.cs">
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wwfd.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Wwfd.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wwfd.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Wwfd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wwfd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Wwfd.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="WwfdEntitiesExtension.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="Wwfd.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Wwfd.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Wwfd.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Wwfd.edmx</DependentUpon>
+      <LastGenOutput>Wwfd.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Wwfd.edmx.diagram">
+      <DependentUpon>Wwfd.edmx</DependentUpon>
+    </None>
+    <None Include="Wwfd.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Wwfd.edmx</DependentUpon>
+      <LastGenOutput>Wwfd.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

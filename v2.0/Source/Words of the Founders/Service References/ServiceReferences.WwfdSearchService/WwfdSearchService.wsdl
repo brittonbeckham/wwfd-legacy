@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WwfdSearchService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://api.whatwouldthefoundersdo.org/WwfdSearchService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://api.whatwouldthefoundersdo.org/WwfdSearchService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://api.whatwouldthefoundersdo.org/WwfdSearchService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Wwfd.Core.DataObjects" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWwfdSearchService_SearchQuotes_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchQuotes" />
+  </wsdl:message>
+  <wsdl:message name="IWwfdSearchService_SearchQuotes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchQuotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWwfdSearchService_SearchFounders_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchFounders" />
+  </wsdl:message>
+  <wsdl:message name="IWwfdSearchService_SearchFounders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchFoundersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWwfdSearchService_GetFounders_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFounders" />
+  </wsdl:message>
+  <wsdl:message name="IWwfdSearchService_GetFounders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoundersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWwfdSearchService">
+    <wsdl:operation name="SearchQuotes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWwfdSearchService/SearchQuotes" message="tns:IWwfdSearchService_SearchQuotes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWwfdSearchService/SearchQuotesResponse" message="tns:IWwfdSearchService_SearchQuotes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchFounders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWwfdSearchService/SearchFounders" message="tns:IWwfdSearchService_SearchFounders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWwfdSearchService/SearchFoundersResponse" message="tns:IWwfdSearchService_SearchFounders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFounders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWwfdSearchService/GetFounders" message="tns:IWwfdSearchService_GetFounders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWwfdSearchService/GetFoundersResponse" message="tns:IWwfdSearchService_GetFounders_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWwfdSearchService" type="tns:IWwfdSearchService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SearchQuotes">
+      <soap:operation soapAction="http://tempuri.org/IWwfdSearchService/SearchQuotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchFounders">
+      <soap:operation soapAction="http://tempuri.org/IWwfdSearchService/SearchFounders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFounders">
+      <soap:operation soapAction="http://tempuri.org/IWwfdSearchService/GetFounders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WwfdSearchService">
+    <wsdl:port name="BasicHttpBinding_IWwfdSearchService" binding="tns:BasicHttpBinding_IWwfdSearchService">
+      <soap:address location="http://api.whatwouldthefoundersdo.org/WwfdSearchService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

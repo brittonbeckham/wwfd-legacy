@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Wwfd.Api.WwfdSearchService" CodeBehind="WwfdSearchService.svc.cs" %>

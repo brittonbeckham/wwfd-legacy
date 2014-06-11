@@ -1,0 +1,22 @@
+﻿<UserControl x:ConnectionId='1'
+    x:Class="Words_of_the_Founders.Controls.QuoteControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Words_of_the_Founders.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignHeight="193" d:DesignWidth="400"                                                                                                                                                                >
+
+	<Grid x:ConnectionId='2' x:Name="GridUserControl" VerticalAlignment="Top"                                >
+		<Grid.Transitions>
+			<TransitionCollection>
+				<EntranceThemeTransition IsStaggeringEnabled="False"/>
+			</TransitionCollection>
+		</Grid.Transitions>
+		<TextBlock x:Name="TextBlockFounder" Margin="149,10,10,0" TextWrapping="Wrap" Text="Founder Name" VerticalAlignment="Top" Height="30" Foreground="Black" FontSize="27"/>
+		<TextBlock x:Name="TextBlockQuote" Margin="149,45,10,0" TextWrapping="Wrap" Text="Quote Text" VerticalAlignment="Top" Foreground="Black" FontSize="20" MaxHeight="117" />
+		<TextBlock x:Name="TextBlockReferenceInfo" Margin="149,164,10,0" TextWrapping="NoWrap" Foreground="Black" FontSize="16" Text="Reference Info" Height="19" VerticalAlignment="Top" />
+		<Image x:Name="ImageFounder" HorizontalAlignment="Left" Height="173" Margin="10,10,10,10" VerticalAlignment="Top" Width="130"/>
+	</Grid>
+</UserControl>
+

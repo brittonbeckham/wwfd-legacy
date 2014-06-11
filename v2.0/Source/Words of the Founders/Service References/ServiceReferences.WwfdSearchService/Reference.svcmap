@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="39149394-d9e2-4686-9f7c-fae1431fa139" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://api.whatwouldthefoundersdo.org/WwfdSearchService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WwfdSearchService.disco" MetadataType="Disco" ID="7992483e-769d-4d6a-a3d3-eb383ed81d6a" SourceId="1" SourceUrl="http://api.whatwouldthefoundersdo.org/WwfdSearchService.svc?disco" />
+    <MetadataFile FileName="WwfdSearchService.xsd" MetadataType="Schema" ID="fdbd56c3-b02b-4cdb-84cb-8540cfc9c3c2" SourceId="1" SourceUrl="http://api.whatwouldthefoundersdo.org/WwfdSearchService.svc?xsd=xsd2" />
+    <MetadataFile FileName="WwfdSearchService1.xsd" MetadataType="Schema" ID="0f6cf2bc-4824-4f3a-b6b9-885b93ed334e" SourceId="1" SourceUrl="http://api.whatwouldthefoundersdo.org/WwfdSearchService.svc?xsd=xsd0" />
+    <MetadataFile FileName="WwfdSearchService2.xsd" MetadataType="Schema" ID="3c44d7da-f2df-4034-9590-f97978f9e065" SourceId="1" SourceUrl="http://api.whatwouldthefoundersdo.org/WwfdSearchService.svc?xsd=xsd1" />
+    <MetadataFile FileName="WwfdSearchService.wsdl" MetadataType="Wsdl" ID="2ec0a0aa-4f07-4c73-843c-0637e1c40a58" SourceId="1" SourceUrl="http://api.whatwouldthefoundersdo.org/WwfdSearchService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1E35C579-45AE-40EC-8682-E0D8E93F1435}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wwfd.Core</RootNamespace>
+    <AssemblyName>Wwfd.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccessAgents\QuoteAgent.cs" />
+    <Compile Include="DataObjects\Founder.cs" />
+    <Compile Include="Data\Founder.cs">
+      <DependentUpon>WwfdCore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Quote.cs">
+      <DependentUpon>WwfdCore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\QuotesView.cs">
+      <DependentUpon>WwfdCore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Search.cs">
+      <DependentUpon>WwfdCore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SearchResult.cs">
+      <DependentUpon>WwfdCore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\WwfdCore.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WwfdCore.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\WwfdCore.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WwfdCore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\WwfdCore.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WwfdCore.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataObjects\Quote.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Data\WwfdCore.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WwfdCore.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Data\WwfdCore.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WwfdCore.edmx</DependentUpon>
+      <LastGenOutput>WwfdCore.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Data\WwfdCore.edmx.diagram">
+      <DependentUpon>WwfdCore.edmx</DependentUpon>
+    </None>
+    <None Include="Data\WwfdCore.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WwfdCore.edmx</DependentUpon>
+      <LastGenOutput>WwfdCore.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

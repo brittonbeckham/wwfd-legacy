@@ -1,0 +1,1 @@
+C:\SVN\WWFD\trunk\Source\Words of the Founders\WordsOfTheFounders.csproj;neutral

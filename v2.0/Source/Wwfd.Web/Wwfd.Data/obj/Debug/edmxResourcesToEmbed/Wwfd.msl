@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WwfdModelStoreContainer" CdmEntityContainer="WwfdEntities">
+    <EntitySetMapping Name="Contributors">
+      <EntityTypeMapping TypeName="WwfdModel.Contributor">
+        <MappingFragment StoreEntitySet="Contributors">
+          <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Founders">
+      <EntityTypeMapping TypeName="WwfdModel.Founder">
+        <MappingFragment StoreEntitySet="Founders">
+          <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateBorn" ColumnName="DateBorn" />
+          <ScalarProperty Name="DateDied" ColumnName="DateDied" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KeywordPhrases">
+      <EntityTypeMapping TypeName="WwfdModel.KeywordPhras">
+        <MappingFragment StoreEntitySet="KeywordPhrases">
+          <ScalarProperty Name="KeywordPhraseID" ColumnName="KeywordPhraseID" />
+          <ScalarProperty Name="Phrase" ColumnName="Phrase" />
+          <ScalarProperty Name="Cardinality" ColumnName="Cardinality" />
+          <ScalarProperty Name="Ratio" ColumnName="Ratio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QOTDs">
+      <EntityTypeMapping TypeName="WwfdModel.QOTD">
+        <MappingFragment StoreEntitySet="QOTD">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QOTDSubscribers">
+      <EntityTypeMapping TypeName="WwfdModel.QOTDSubscriber">
+        <MappingFragment StoreEntitySet="QOTDSubscribers">
+          <ScalarProperty Name="SubscriberID" ColumnName="SubscriberID" />
+          <ScalarProperty Name="SubscriberEmail" ColumnName="SubscriberEmail" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuoteFlags">
+      <EntityTypeMapping TypeName="WwfdModel.QuoteFlag">
+        <MappingFragment StoreEntitySet="QuoteFlags">
+          <ScalarProperty Name="FlagID" ColumnName="FlagID" />
+          <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+          <ScalarProperty Name="FlaggedByContributorID" ColumnName="FlaggedByContributorID" />
+          <ScalarProperty Name="FlagRemovedByContributorID" ColumnName="FlagRemovedByContributorID" />
+          <ScalarProperty Name="QuoteFlagTypeID" ColumnName="QuoteFlagTypeID" />
+          <ScalarProperty Name="DateFlagged" ColumnName="DateFlagged" />
+          <ScalarProperty Name="DateFlaggedRemoved" ColumnName="DateFlaggedRemoved" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuoteFlagTypes">
+      <EntityTypeMapping TypeName="WwfdModel.QuoteFlagType">
+        <MappingFragment StoreEntitySet="QuoteFlagTypes">
+          <ScalarProperty Name="QuoteFlagTypeID" ColumnName="QuoteFlagTypeID" />
+          <ScalarProperty Name="FlagDescription" ColumnName="FlagDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuoteHistories">
+      <EntityTypeMapping TypeName="WwfdModel.QuoteHistory">
+        <MappingFragment StoreEntitySet="QuoteHistory">
+          <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+          <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+          <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quotes">
+      <EntityTypeMapping TypeName="WwfdModel.Quote">
+        <MappingFragment StoreEntitySet="Quotes">
+          <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+          <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+          <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+          <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+          <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="Approved" ColumnName="Approved" />
+          <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuoteTaskHistories">
+      <EntityTypeMapping TypeName="WwfdModel.QuoteTaskHistory">
+        <MappingFragment StoreEntitySet="QuoteTaskHistory">
+          <ScalarProperty Name="QuoteTaskHistoryID" ColumnName="QuoteTaskHistoryID" />
+          <ScalarProperty Name="QuoteTaskTypeID" ColumnName="QuoteTaskTypeID" />
+          <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+          <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+          <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuoteTaskTypes">
+      <EntityTypeMapping TypeName="WwfdModel.QuoteTaskType">
+        <MappingFragment StoreEntitySet="QuoteTaskTypes">
+          <ScalarProperty Name="QuoteTaskTypeID" ColumnName="QuoteTaskTypeID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="WwfdModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Searches">
+      <EntityTypeMapping TypeName="WwfdModel.Search">
+        <MappingFragment StoreEntitySet="Searches">
+          <ScalarProperty Name="SearchID" ColumnName="SearchID" />
+          <ScalarProperty Name="SearchText" ColumnName="SearchText" />
+          <ScalarProperty Name="DateSearched" ColumnName="DateSearched" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContributionsViews">
+      <EntityTypeMapping TypeName="WwfdModel.ContributionsView">
+        <MappingFragment StoreEntitySet="ContributionsView">
+          <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+          <ScalarProperty Name="Contributor" ColumnName="Contributor" />
+          <ScalarProperty Name="QuotesEntered" ColumnName="QuotesEntered" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuotesViews">
+      <EntityTypeMapping TypeName="WwfdModel.QuotesView">
+        <MappingFragment StoreEntitySet="QuotesView">
+          <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+          <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+          <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+          <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SearchReportViews">
+      <EntityTypeMapping TypeName="WwfdModel.SearchReportView">
+        <MappingFragment StoreEntitySet="SearchReportView">
+          <ScalarProperty Name="SearchText" ColumnName="SearchText" />
+          <ScalarProperty Name="TimesSearched" ColumnName="TimesSearched" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="WwfdModel.Store.Split" FunctionImportName="Split">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WwfdModel.Split_Result">
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="part" ColumnName="part" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddQOTDSubscriber" FunctionName="WwfdModel.Store.AddQOTDSubscriber" />
+    <FunctionImportMapping FunctionImportName="AuthenticateUser" FunctionName="WwfdModel.Store.AuthenticateUser" />
+    <FunctionImportMapping FunctionImportName="BuildKeywordPhrasesTable" FunctionName="WwfdModel.Store.BuildKeywordPhrasesTable" />
+    <FunctionImportMapping FunctionImportName="CreateRandomQOTD" FunctionName="WwfdModel.Store.CreateRandomQOTD" />
+    <FunctionImportMapping FunctionImportName="GetQuoteOfTheDay" FunctionName="WwfdModel.Store.GetQuoteOfTheDay">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WwfdModel.GetQuoteOfTheDay_Result">
+          <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+          <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+          <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+          <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetRandomQuote" FunctionName="WwfdModel.Store.GetRandomQuote">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WwfdModel.GetRandomQuote_Result">
+          <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+          <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+          <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+          <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+          <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="Approved" ColumnName="Approved" />
+          <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetRandomQuoteID" FunctionName="WwfdModel.Store.GetRandomQuoteID" />
+    <FunctionImportMapping FunctionImportName="GetStats" FunctionName="WwfdModel.Store.GetStats">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WwfdModel.GetStats_Result">
+          <ScalarProperty Name="QuoteCount" ColumnName="QuoteCount" />
+          <ScalarProperty Name="FounderCount" ColumnName="FounderCount" />
+          <ScalarProperty Name="SubscriberCount" ColumnName="SubscriberCount" />
+          <ScalarProperty Name="LastQOTD" ColumnName="LastQOTD" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTopKeywordPhrases" FunctionName="WwfdModel.Store.GetTopKeywordPhrases" />
+    <FunctionImportMapping FunctionImportName="SearchFounders" FunctionName="WwfdModel.Store.SearchFounders">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WwfdModel.SearchFounders_Result">
+          <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateBorn" ColumnName="DateBorn" />
+          <ScalarProperty Name="DateDied" ColumnName="DateDied" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchQuotes" FunctionName="WwfdModel.Store.SearchQuotes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WwfdModel.SearchQuotes_Result">
+          <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+          <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+          <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+          <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+          <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="Approved" ColumnName="Approved" />
+          <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchQuotesOld" FunctionName="WwfdModel.Store.SearchQuotesOld" />
+    <FunctionImportMapping FunctionImportName="SetQOTDStatus" FunctionName="WwfdModel.Store.SetQOTDStatus" />
+  </EntityContainerMapping>
+</Mapping>

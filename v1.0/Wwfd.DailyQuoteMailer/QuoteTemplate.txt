@@ -1,0 +1,25 @@
+﻿<style>
+
+body {
+	color: black;
+}
+
+#quote {
+	padding-left: 25px;
+}
+
+#footer {
+	color: Gray;
+	size: 10px;
+}
+</style>
+
+<h2>What Would the Founders Do? Quote of the Day for [[Date]]:</h2>
+
+<p>[[Quote]]</p> 
+—[[Founder]] ([[Source]])
+
+<p>
+If you no longer wish to receive these emails, click here to <a href="http://www.whatwouldthefoundersdo.org/unsubscribe.aspx?user=[[SubscriberID]]">unsubscribe</a>.
+</p>
+

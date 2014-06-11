@@ -1,0 +1,5 @@
+﻿Thank you {0} for registering on the Wwfd website. We are looking forward to having you help us with this important cause.
+To confirm your recent registration, please click on the link below.
+\n\n\thttp://www.whatwouldthefoundersdo.org/contribute/register.aspx?confirm={1}&u={2}
+\n\nYou are receiving this because you registed on the Wwfd website to become a contributor to the cause (http://www.whatwouldthefoundersdo.org).
+If you are receiving this email in error (or you are not {0}), please feel free to contact us at webmaster@whatwouldthefoundersdo.org to let us know.

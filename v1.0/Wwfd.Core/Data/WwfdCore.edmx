@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="wwfdModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="wwfdModelStoreContainer">
+          <EntitySet Name="Founders" EntityType="wwfdModel.Store.Founders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Quotes" EntityType="wwfdModel.Store.Quotes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Searches" EntityType="wwfdModel.Store.Searches" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="QuotesView" EntityType="wwfdModel.Store.QuotesView" store:Type="Views" store:Schema="dbo" store:Name="QuotesView">
+            <DefiningQuery>SELECT 
+      [QuotesView].[FounderID] AS [FounderID], 
+      [QuotesView].[QuoteID] AS [QuoteID], 
+      [QuotesView].[ContributorID] AS [ContributorID], 
+      [QuotesView].[FullName] AS [FullName], 
+      [QuotesView].[QuoteText] AS [QuoteText], 
+      [QuotesView].[ReferenceInfo] AS [ReferenceInfo], 
+      [QuotesView].[Keywords] AS [Keywords], 
+      [QuotesView].[QuoteLength] AS [QuoteLength], 
+      [QuotesView].[DateAdded] AS [DateAdded]
+      FROM [dbo].[QuotesView] AS [QuotesView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Quotes_Founders" Association="wwfdModel.Store.FK_Quotes_Founders">
+            <End Role="Founders" EntitySet="Founders" />
+            <End Role="Quotes" EntitySet="Quotes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Founders">
+          <Key>
+            <PropertyRef Name="FounderID" />
+          </Key>
+          <Property Name="FounderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="35" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="35" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="35" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="15" />
+          <Property Name="Gender" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="DateBorn" Type="date" />
+          <Property Name="DateDied" Type="date" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="124" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Quotes">
+          <Key>
+            <PropertyRef Name="QuoteID" />
+          </Key>
+          <Property Name="QuoteID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContributorID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FounderID" Type="int" Nullable="false" />
+          <Property Name="QuoteText" Type="nvarchar" Nullable="false" MaxLength="1850" />
+          <Property Name="ReferenceInfo" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Keywords" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="Approved" Type="bit" Nullable="false" />
+          <Property Name="QuoteLength" Type="int" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Searches">
+          <Key>
+            <PropertyRef Name="SearchID" />
+          </Key>
+          <Property Name="SearchID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SearchText" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="DateSearched" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'wwfd.dbo.QuotesView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="QuotesView">
+          <Key>
+            <PropertyRef Name="QuoteID" />
+            <PropertyRef Name="ContributorID" />
+            <PropertyRef Name="QuoteText" />
+            <PropertyRef Name="ReferenceInfo" />
+            <PropertyRef Name="Keywords" />
+            <PropertyRef Name="DateAdded" />
+          </Key>
+          <Property Name="FounderID" Type="int" />
+          <Property Name="QuoteID" Type="int" Nullable="false" />
+          <Property Name="ContributorID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="124" />
+          <Property Name="QuoteText" Type="nvarchar" Nullable="false" MaxLength="1850" />
+          <Property Name="ReferenceInfo" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Keywords" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="QuoteLength" Type="int" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Quotes_Founders">
+          <End Role="Founders" Type="wwfdModel.Store.Founders" Multiplicity="1" />
+          <End Role="Quotes" Type="wwfdModel.Store.Quotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Founders">
+              <PropertyRef Name="FounderID" />
+            </Principal>
+            <Dependent Role="Quotes">
+              <PropertyRef Name="FounderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SearchQuotes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchText" Type="nvarchar" Mode="In" />
+          <Parameter Name="SaveSearch" Type="bit" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="wwfdModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WwfdEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Founders" EntityType="wwfdModel.Founder" />
+          <EntitySet Name="Quotes" EntityType="wwfdModel.Quote" />
+          <EntitySet Name="Searches" EntityType="wwfdModel.Search" />
+          <EntitySet Name="QuotesViews" EntityType="wwfdModel.QuotesView" />
+          <AssociationSet Name="FK_Quotes_Founders" Association="wwfdModel.FK_Quotes_Founders">
+            <End Role="Founders" EntitySet="Founders" />
+            <End Role="Quotes" EntitySet="Quotes" />
+          </AssociationSet>
+          <FunctionImport Name="SearchQuotes" ReturnType="Collection(wwfdModel.SearchResult)">
+            <Parameter Name="SearchText" Mode="In" Type="String" />
+            <Parameter Name="SaveSearch" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Founder">
+          <Key>
+            <PropertyRef Name="FounderID" />
+          </Key>
+          <Property Name="FounderID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="35" Unicode="true" FixedLength="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="35" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="35" Unicode="true" FixedLength="false" />
+          <Property Name="Suffix" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="DateBorn" Type="DateTime" Precision="0" />
+          <Property Name="DateDied" Type="DateTime" Precision="0" />
+          <Property Name="FullName" Type="String" MaxLength="124" Unicode="true" FixedLength="false" p1:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Quotes" Relationship="wwfdModel.FK_Quotes_Founders" FromRole="Founders" ToRole="Quotes" />
+        </EntityType>
+        <EntityType Name="Quote">
+          <Key>
+            <PropertyRef Name="QuoteID" />
+          </Key>
+          <Property Name="QuoteID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ContributorID" Type="Guid" Nullable="false" />
+          <Property Name="FounderID" Type="Int32" Nullable="false" />
+          <Property Name="QuoteText" Type="String" Nullable="false" MaxLength="1850" Unicode="true" FixedLength="false" />
+          <Property Name="ReferenceInfo" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Keywords" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Approved" Type="Boolean" Nullable="false" />
+          <Property Name="QuoteLength" Type="Int32" p1:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Founder" Relationship="wwfdModel.FK_Quotes_Founders" FromRole="Quotes" ToRole="Founders" />
+        </EntityType>
+        <EntityType Name="Search">
+          <Key>
+            <PropertyRef Name="SearchID" />
+          </Key>
+          <Property Name="SearchID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SearchText" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DateSearched" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="QuotesView">
+          <Key>
+            <PropertyRef Name="QuoteID" />
+            <PropertyRef Name="ContributorID" />
+            <PropertyRef Name="QuoteText" />
+            <PropertyRef Name="ReferenceInfo" />
+            <PropertyRef Name="Keywords" />
+            <PropertyRef Name="DateAdded" />
+          </Key>
+          <Property Name="FounderID" Type="Int32" />
+          <Property Name="QuoteID" Type="Int32" Nullable="false" />
+          <Property Name="ContributorID" Type="Guid" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="124" Unicode="true" FixedLength="false" />
+          <Property Name="QuoteText" Type="String" Nullable="false" MaxLength="1850" Unicode="true" FixedLength="false" />
+          <Property Name="ReferenceInfo" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Keywords" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="QuoteLength" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Quotes_Founders">
+          <End Role="Founders" Type="wwfdModel.Founder" Multiplicity="1" />
+          <End Role="Quotes" Type="wwfdModel.Quote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Founders">
+              <PropertyRef Name="FounderID" />
+            </Principal>
+            <Dependent Role="Quotes">
+              <PropertyRef Name="FounderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SearchResult" >
+          <Property Type="String" Name="FullName" Nullable="false" />
+          <Property Type="String" Name="QuoteText" Nullable="false" />
+          <Property Type="Int32" Name="QuoteID" Nullable="false" />
+          <Property Type="Int32" Name="FounderID" Nullable="false" />
+          <Property Type="String" Name="ReferenceInfo" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="wwfdModelStoreContainer" CdmEntityContainer="WwfdEntities">
+          <EntitySetMapping Name="Founders">
+            <EntityTypeMapping TypeName="wwfdModel.Founder">
+              <MappingFragment StoreEntitySet="Founders">
+                <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateBorn" ColumnName="DateBorn" />
+                <ScalarProperty Name="DateDied" ColumnName="DateDied" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quotes">
+            <EntityTypeMapping TypeName="wwfdModel.Quote">
+              <MappingFragment StoreEntitySet="Quotes">
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+                <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+                <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+                <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Searches">
+            <EntityTypeMapping TypeName="wwfdModel.Search">
+              <MappingFragment StoreEntitySet="Searches">
+                <ScalarProperty Name="SearchID" ColumnName="SearchID" />
+                <ScalarProperty Name="SearchText" ColumnName="SearchText" />
+                <ScalarProperty Name="DateSearched" ColumnName="DateSearched" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuotesViews">
+            <EntityTypeMapping TypeName="wwfdModel.QuotesView">
+              <MappingFragment StoreEntitySet="QuotesView">
+                <ScalarProperty Name="FounderID" ColumnName="FounderID" />
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="ContributorID" ColumnName="ContributorID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="QuoteText" ColumnName="QuoteText" />
+                <ScalarProperty Name="ReferenceInfo" ColumnName="ReferenceInfo" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="QuoteLength" ColumnName="QuoteLength" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SearchQuotes" FunctionName="wwfdModel.Store.SearchQuotes" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="wwfdModel.SearchResult" />
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
