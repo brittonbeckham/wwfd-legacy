@@ -1,0 +1,1 @@
+C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Data.Interface\obj\Debug\Wwfd.Data.Interface.csprojResolveAssemblyReference.cache

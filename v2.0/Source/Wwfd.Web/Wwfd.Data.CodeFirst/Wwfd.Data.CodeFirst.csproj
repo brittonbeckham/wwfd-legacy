@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CE9FD280-4EE9-4C67-9BE2-F38DC3C99A59}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wwfd.Data.CodeFirst</RootNamespace>
+    <AssemblyName>Wwfd.Data.CodeFirst</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="SSW.Data.EF.Enums.Core">
+      <HintPath>..\packages\SSW.Data.EF.Enums.1.0.0.0\lib\net45\SSW.Data.EF.Enums.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\LanguageExtensions.cs" />
+    <Compile Include="Context\FullTextSearchInterceptor.cs" />
+    <Compile Include="Context\LookupTableSeeder.cs" />
+    <Compile Include="Context\WwfdContext.cs" />
+    <Compile Include="Context\WwfdSchemas.cs" />
+    <Compile Include="Enums\DailyQuoteProcessesStatusType.cs" />
+    <Compile Include="Schemas\dbo\ContributorRoleType.cs" />
+    <Compile Include="Schemas\dbo\FounderRoleType.cs" />
+    <Compile Include="Schemas\dbo\PerformedSearch.cs" />
+    <Compile Include="Schemas\dbo\QuoteHistoryType.cs" />
+    <Compile Include="Schemas\dbo\QuoteHistory.cs" />
+    <Compile Include="Schemas\dbo\QuoteReference.cs" />
+    <Compile Include="Schemas\dbo\QuoteReferenceStatusType.cs" />
+    <Compile Include="Schemas\dbo\QuoteStatusType.cs" />
+    <Compile Include="Enums\ContributorRoleType.cs" />
+    <Compile Include="Schemas\dbo\Contributor.cs" />
+    <Compile Include="Schemas\dbo\Founder.cs" />
+    <Compile Include="Schemas\dbo\Quote.cs" />
+    <Compile Include="Enums\FounderRoleType.cs" />
+    <Compile Include="Enums\QuoteHistoryType.cs" />
+    <Compile Include="Enums\QuoteReferenceStatusType.cs" />
+    <Compile Include="Enums\QuoteStatusType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schemas\DailyQuote\DailyQuote.cs" />
+    <Compile Include="Schemas\DailyQuote\DailyQuoteProcess.cs" />
+    <Compile Include="Schemas\DailyQuote\DailyQuoteProcessStatusType.cs" />
+    <Compile Include="Schemas\DailyQuote\DailyQuoteSubscriber.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\SeedContributors.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\SeedFounders.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\SetupFullText.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\SeedQuotes.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\SetupTriggers.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\SeedQuoteHistories.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\SeedQuoteReferences.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

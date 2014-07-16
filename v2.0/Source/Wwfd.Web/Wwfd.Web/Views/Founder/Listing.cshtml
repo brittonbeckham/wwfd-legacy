@@ -1,7 +1,7 @@
-﻿@using Wwfd.Core.Aggregates
-@model List<Wwfd.Core.Aggregates.FounderWithQuoteCount>
+﻿@using Wwfd.Core.Dto.Aggregates
+@model List<Wwfd.Core.Dto.Aggregates.FounderWithQuoteCountDto>
 
-@foreach (FounderWithQuoteCount i in Model)
+@foreach (FounderWithQuoteCountDto i in Model)
 {
     <div>
         <a href="/Founder/@i.FounderId">@i.FullName (@i.QuoteCount)</a>

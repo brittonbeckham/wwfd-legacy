@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
-using Wwfd.Core;
-using Wwfd.Core.Aggregates;
+using Wwfd.Core.Agents;
+using Wwfd.Core.Dto.Aggregates;
 
 namespace Wwfd.Web.Controllers
 {
@@ -16,7 +17,7 @@ namespace Wwfd.Web.Controllers
 		
 		public PartialViewResult Listing(string id)
 		{
-			List<FounderWithQuoteCount> model = new FounderAgent().GetFoundersWithQuoteCount(id);
+			List<FounderWithQuoteCountDto> model = new FounderAgent().GetWithQuoteCountByName(id, null).ToList();
 
 			return PartialView(model);
 		}

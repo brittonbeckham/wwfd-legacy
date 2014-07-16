@@ -1,0 +1,10 @@
+C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Data.CodeFirst\bin\Debug\Wwfd.Data.CodeFirst.dll.config
+C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Data.CodeFirst\bin\Debug\Wwfd.Data.CodeFirst.dll
+C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Data.CodeFirst\bin\Debug\Wwfd.Data.CodeFirst.pdb
+C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Data.CodeFirst\bin\Debug\EntityFramework.dll
+C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Data.CodeFirst\bin\Debug\EntityFramework.SqlServer.dll
+C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Data.CodeFirst\bin\Debug\SSW.Data.EF.Enums.Core.dll
+C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Data.CodeFirst\bin\Debug\EntityFramework.xml
+C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Data.CodeFirst\bin\Debug\EntityFramework.SqlServer.xml
+C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Data.CodeFirst\obj\Debug\Wwfd.Data.CodeFirst.dll
+C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Data.CodeFirst\obj\Debug\Wwfd.Data.CodeFirst.pdb
