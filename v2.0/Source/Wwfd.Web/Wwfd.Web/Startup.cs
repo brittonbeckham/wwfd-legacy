@@ -10,6 +10,8 @@ namespace Wwfd.Web
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
+			//here is my changes
         }
     }
 }
