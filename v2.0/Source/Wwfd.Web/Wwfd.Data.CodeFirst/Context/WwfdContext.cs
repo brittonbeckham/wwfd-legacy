@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Interception;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -10,6 +11,11 @@ namespace Wwfd.Data.CodeFirst.Context
 {
 	public class WwfdContext : DbContext
 	{
+		public WwfdContext() : base (ConfigurationManager.ConnectionStrings["Wwfd"].ConnectionString)
+		{
+			
+		}
+
 		private static Assembly _assembly;
 
 		private static Assembly Assembly
@@ -59,6 +65,8 @@ namespace Wwfd.Data.CodeFirst.Context
 			//populate db with data if requested
 			if (populateSeedData)
 				PopulateSeedData(context);
+
+			
 		}
 
 		private static void SetupExtendedOptions(WwfdContext context)
@@ -68,6 +76,9 @@ namespace Wwfd.Data.CodeFirst.Context
 
 			//triggers
 			context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, GetResourceSqlScript("Wwfd.Data.CodeFirst.Scripts.SetupTriggers.sql"));
+
+			//disable lazyloading (should be default)
+			context.Configuration.LazyLoadingEnabled = false;
 		}
 
 		private static void PopulateSeedData(WwfdContext context)
@@ -131,6 +142,8 @@ namespace Wwfd.Data.CodeFirst.Context
 
 			//this ensures that full text searching will be enabled for certain fields
 			DbInterception.Add(new FullTextSearchInterceptor());
+
+						
 		}
 
 		private static string GetResourceSqlScript(string resourcePath)

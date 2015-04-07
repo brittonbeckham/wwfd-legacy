@@ -1,0 +1,20 @@
+﻿<div ng-controller="founderController">
+	<h1>{{founder.FullName}}</h1>
+
+
+	<hr />
+
+	<div>
+		<h2>Founder Quotes</h2>
+
+		<div ng-repeat="quote in quotes">
+			<p>{{ quote.QuoteText }}</p>
+
+			<div ng-repeat="word in quote.Keywords" class="label label-info">
+				{{ word }}
+			</div>
+			<hr />
+		</div>
+	</div>
+
+</div>

@@ -1,6 +1,0 @@
-C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Api\bin\Debug\Wwfd.Api.dll.config
-C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Api\bin\Debug\Wwfd.Api.dll
-C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Api\bin\Debug\Wwfd.Api.pdb
-C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Api\obj\Debug\Wwfd.Api.csprojResolveAssemblyReference.cache
-C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Api\obj\Debug\Wwfd.Api.dll
-C:\GIT\WWFD\v2.0\Source\Wwfd.Web\Wwfd.Api\obj\Debug\Wwfd.Api.pdb

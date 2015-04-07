@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
 using Wwfd.Core.Dto;
-using Wwfd.Core.Dto.Aggregates;
 using Wwfd.Data.CodeFirst.Schemas.dbo;
 
 namespace Wwfd.Core.Agents
@@ -47,7 +46,7 @@ namespace Wwfd.Core.Agents
 		public IEnumerable<FounderDto> GetAll()
 		{
 			return CurrentContext.Founders
-					.Include("FounderRoles")
+					.Include(r=>r.FounderRoles)
 					.ToArray()
 					.Select(r => MapToDto<Founder, FounderDto>(r))
 					.ToArray();
@@ -63,10 +62,10 @@ namespace Wwfd.Core.Agents
 		public IEnumerable<FounderDto> GetByName(string firstName, string lastName)
 		{
 			return CurrentContext.Founders
-					.Include("FounderRoles")
+					.Include(r => r.FounderRoles)
 					.Where(r =>
 						(firstName != null && r.FirstName.Contains(firstName))
-						&& (lastName != null && r.LastName.Contains(lastName)))
+						|| (lastName != null && r.LastName.Contains(lastName)))
 					.ToArray()
 					.Select(r => MapToDto<Founder, FounderDto>(r))
 					.ToArray();
@@ -122,6 +121,11 @@ namespace Wwfd.Core.Agents
 					});
 
 			return x.ToArray();
+		}
+
+		public void Update(FounderDto founder, IEnumerable<FounderRoleDto> roles)
+		{
+			
 		}
 	}
 }

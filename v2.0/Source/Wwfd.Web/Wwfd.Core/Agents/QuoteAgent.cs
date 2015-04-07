@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using AutoMapper;
 using Wwfd.Core.Dto;
 using Wwfd.Data.CodeFirst.Context;
@@ -18,8 +19,7 @@ namespace Wwfd.Core.Agents
 			Mapper.CreateMap<Quote, QuoteDto>()
 				.ForMember(dest => dest.Founder, opt => opt.MapFrom(src => src.Founder))
 				.ForMember(dest => dest.QuoteStatus, opt => opt.MapFrom(src => src.QuoteStatusType.Name))
-				.ForMember(dest => dest.References, opt => opt.MapFrom(src => src.QuoteReferences))
-				;
+				.ForMember(dest => dest.References, opt => opt.MapFrom(src => src.QuoteReferences));
 
 		}
 
@@ -56,8 +56,8 @@ namespace Wwfd.Core.Agents
 					searchKeyword = FullTextSearchInterceptor.AsFullTextSearch(searchKeyword);
 
 				return CurrentContext.Quotes
-					.Include("QuoteReferences")
-					.Include("Founder")
+					.Include(r => r.QuoteReferences)
+					.Include(r => r.Founder)
 					.Where(r =>
 						r.QuoteText.Contains(searchText)
 						|| r.Keywords.Contains(searchKeyword))
@@ -81,8 +81,8 @@ namespace Wwfd.Core.Agents
 		public QuoteDto GetById(int quoteId)
 		{
 			var entity = CurrentContext.Quotes
-							.Include("QuoteReferences")
-							.Include("Founder")
+							.Include(r => r.QuoteReferences)
+							.Include(r => r.Founder)
 							.First(r => r.QuoteId == quoteId);
 
 			ErrorIfEntityIsNull(entity);
@@ -94,8 +94,8 @@ namespace Wwfd.Core.Agents
 		public IEnumerable<QuoteDto> GetByFounderId(int founderId)
 		{
 			return CurrentContext.Quotes
-					.Include("QuoteReferences")
-					.Include("Founder")
+					.Include(r => r.QuoteReferences)
+					.Include(r => r.Founder)
 					.Where(r => r.FounderId == founderId)
 					.ToArray()
 					.Select(r => MapToDto<Quote, QuoteDto>(r))
